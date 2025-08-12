@@ -183,7 +183,7 @@ export function autoload(options?: AutoloadOptions | string) {
           const files = globSync(pattern, { cwd: directory });
 
           // 替换动态文件扫描为静态文件列表
-          const filesList = files.map((file) => `"${file.replace(/\\/g, "/")}"`).join(", ");
+          const filesList = files.map((file) => `"${file.replace(/\\/gi, "/")}"`).join(", ");
           content = content.replace(
             "let files = globSync(globPattern, globOptions);",
             `let files = [${filesList}];`
@@ -199,8 +199,8 @@ export function autoload(options?: AutoloadOptions | string) {
           const fileImports = files
             .map((file) => {
               // const absolutePath = path.resolve(directory, file).replace(/\/gi, "\\\\");
-              const absolutePath = path.resolve(directory, file).replace(/\\/g, "/");
-              const normalizedFile = file.replace(/\\/g, "/");
+              const absolutePath = path.resolve(directory, file).replace(/\\/gi, "/");
+              const normalizedFile = file.replace(/\\/gi, "/");
               return `"${normalizedFile}": await import("${absolutePath}")`;
             })
             .join(",\n                            ");

@@ -2,6 +2,10 @@
   "name": "elysia",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "bun build.ts",
+    "dev": "bun run src/index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -9,6 +13,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "elysia": "^1.2.9"
+    "elysia": "^1.2.9",
+    "elysia-autoload": "^1.6.0"
   }
 }
